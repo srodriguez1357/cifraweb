@@ -47,7 +47,8 @@ app.post('/cifradirijillo', (req, res)=>{
   
   app.post('/decifradirijillo', (req,res)=>{
     const cryptr = new Cryptr('technique');
-    const encryptedString = cryptr.encrypt('./textos/confidencial.txt');
+    let info = fs.readFileSync('./textos/confidencial.txt');
+    const encryptedString = cryptr.encrypt(info);
     console.log(encryptedString); 
     const decryptedString = cryptr.decrypt(encryptedString);
     console.log(decryptedString); 
